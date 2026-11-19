@@ -1,8 +1,24 @@
+#!/usr/bin/env bash
+# =============================================================================
+# flow_comparison.sh
+#
+# Run the flow comparison (flow_comparison.py) inside the flow-comparison
+# Docker image.
+#
+# Paths can be overridden with environment variables:
+#   REPO_DIR       Path to this repository (default: derived from script location)
+#   HOST_DATA_DIR  Path to the t-route data directory (default: ${REPO_DIR}/t-route)
+#
+# Usage:
+#   bash scripts/bash/flow_comparison.sh [extra flow_comparison.py args]
+#   HOST_DATA_DIR=/path/to/t-route bash scripts/bash/flow_comparison.sh
+# =============================================================================
 set -eo pipefail
 
 # Directory paths
-REPO_DIR="/home/alk05/testing/routing-comparison-nwm-nextgen-troute"
-HOST_DATA_DIR="/home/alk05/testing/t-route"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO_DIR="${REPO_DIR:-$(cd "${SCRIPT_DIR}/../.." && pwd)}"
+HOST_DATA_DIR="${HOST_DATA_DIR:-${REPO_DIR}/t-route}"
 PYTHON_SCRIPT_DIR="${REPO_DIR}/scripts/python"
 
 CONTAINER_REPO_DIR="/routing-comparison-nwm-nextgen-troute"
