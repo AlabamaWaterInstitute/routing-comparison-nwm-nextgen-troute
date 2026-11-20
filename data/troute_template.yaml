@@ -44,6 +44,7 @@ compute_parameters:
         start_datetime: ${START_DATETIME}
         wrf_hydro_channel_restart_file        : restart/troute_restart.nc
         wrf_hydro_channel_ID_crosswalk_file   : restart/crosswalk.nc
+        wrf_hydro_channel_restart_input_type : reorder
         wrf_hydro_channel_ID_crosswalk_file_field_name : link
         wrf_hydro_channel_restart_upstream_flow_field_name : qlink1
         wrf_hydro_channel_restart_downstream_flow_field_name : qlink2
@@ -60,8 +61,7 @@ compute_parameters:
     data_assimilation_parameters:
         streamflow_da:
             #----------
-            streamflow_nudging: False
-            diffusive_streamflow_nudging: False
+            da_from_feather : da/troute_da.feather
         reservoir_da:
             #----------
             reservoir_persistence_da:

@@ -55,10 +55,10 @@ def main():
         df_t_route.groupby(["catchment", "time"])
         .agg(
             {
-                "flow": "mean",
-                "velocity": "mean",
-                "depth": "mean",
-                "nudge": "mean",
+                "flow": "max", # or average (shouldn't change results due to one-to-one json)
+                "velocity": "max",
+                "depth": "max",
+                "nudge": "max",
                 "type": "first",  # or 'most_common' if you prefer
             }
         )
