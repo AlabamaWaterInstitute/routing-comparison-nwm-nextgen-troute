@@ -3,7 +3,7 @@ ENV START_TIME=""
 ENV FORECAST_TYPE=""
 
 RUN dnf install -y git && dnf clean all
-RUN git clone --depth 1 -b temp_routelinkdev https://github.com/alk05/troute-usgsdf.git /opt/troute-da
+ADD https://github.com/alabamawaterinstitute/troute-usgsdf.git#routelinkdev-review-fixes /opt/troute-da/
 
 
 RUN dnf -y install \
